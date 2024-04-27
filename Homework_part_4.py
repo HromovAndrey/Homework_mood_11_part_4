@@ -16,23 +16,24 @@ class InformationSystem:
         if username in self.data:
             self.data[username].append(contact)
         else:
-            print(f"Користувача з ім'ям {username} не існує.")
+            print(f"Користувача з ім'ям {username} не існує. Спочатку додайте користувача.")
 
     @classmethod
-    def class_method(cls, x):
-        return cls.class_variable * x
+    def add_users_and_contacts(cls, users_and_contacts):
+        info_system = cls()
+        for user, contacts in users_and_contacts.items():
+            info_system.add_user(user)
+            for contact in contacts:
+                info_system.add_contact(user, contact)
+        return info_system
 
-# Приклад використання класу
-info_system = InformationSystem()
+users_and_contacts = {
+    "user1": ["contact1", "contact2"],
+    "user2": ["contact3", "contact4"],
+}
 
-# Додаємо нових користувачів та їх контакти
-info_system.add_user("user1")
-info_system.add_contact("user1", "contact1")
-info_system.add_contact("user1", "contact2")
-
-info_system.add_user("user2")
-info_system.add_contact("user2", "contact3")
-info_system.add_contact("user2", "contact4")
-
+info_system = InformationSystem.add_users_and_contacts(users_and_contacts)
 
 print(info_system.data)
+
+
