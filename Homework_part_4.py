@@ -1,38 +1,29 @@
-# Завдання 4
-#  Створіть клас InformationSystem, який має атрибут data
-# - словник, де ключі - це імена користувачів, а значення -
-# список їх контактів. Реалізуйте методи класу для додавання
-# нових користувачів та їх контактів.
+# Завдання 1
+# До вже реалізованого класу «Дріб» додайте
+# статичний метод, який при виклику
+# повертає кількість створених об’єктів
+# класу «Дріб
+class Fraction:
+    instance_count = 0
 
-class InformationSystem:
-    def __init__(self):
-        self.data = {}
+    def __init__(self, numerator, denominator):
+        self.numerator = numerator
+        self.denominator = denominator
+        Fraction.instance_count += 1
 
-    def add_user(self, username):
-        if username not in self.data:
-            self.data[username] = []
+    def __str__(self):
+        return f"{self.numerator}/{self.denominator}"
 
-    def add_contact(self, username, contact):
-        if username in self.data:
-            self.data[username].append(contact)
-        else:
-            print(f"Користувача з ім'ям {username} не існує.")
+    @staticmethod
+    def get_instance_count():
+        return Fraction.instance_count
 
-    @classmethod
-    def class_method(cls, x):
-        return cls.class_variable * x
+fraction1 = Fraction(1, 2)
+fraction2 = Fraction(3, 4)
 
-# Приклад використання класу
-info_system = InformationSystem()
+fraction3 = Fraction(2, 3)
 
-# Додаємо нових користувачів та їх контакти
-info_system.add_user("user1")
-info_system.add_contact("user1", "contact1")
-info_system.add_contact("user1", "contact2")
+print(Fraction.get_instance_count())
+print(fraction1)
+print(fraction2)
 
-info_system.add_user("user2")
-info_system.add_contact("user2", "contact3")
-info_system.add_contact("user2", "contact4")
-
-# Виводимо дані системи
-print(info_system.data)
