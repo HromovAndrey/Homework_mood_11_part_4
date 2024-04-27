@@ -1,29 +1,32 @@
-# Завдання 1
-# До вже реалізованого класу «Дріб» додайте
-# статичний метод, який при виклику
-# повертає кількість створених об’єктів
-# класу «Дріб
-class Fraction:
-    instance_count = 0
+# Завдання 2
+# Створіть клас для конвертування температури з Цельсія
+# у Фаренгейт, і навпаки. У класі має знаходитися два статичні
+# методи: для конвертування з Цельсія у Фаренгейт і для конвертування з Фаренгейта у Цельсій. Також клас має розрахувати
+# кількість підрахунків температури та повернути це значення
+# статичним методом.
 
-    def __init__(self, numerator, denominator):
-        self.numerator = numerator
-        self.denominator = denominator
-        Fraction.instance_count += 1
-
-    def __str__(self):
-        return f"{self.numerator}/{self.denominator}"
+class TemperatureConverter:
+    conversion_count = 0
 
     @staticmethod
-    def get_instance_count():
-        return Fraction.instance_count
+    def celsius_to_fahrenheit(celsius):
+        TemperatureConverter.conversion_count += 1
+        return (celsius * 9/5) + 32
 
-fraction1 = Fraction(1, 2)
-fraction2 = Fraction(3, 4)
+    @staticmethod
+    def fahrenheit_to_celsius(fahrenheit):
+        TemperatureConverter.conversion_count += 1
+        return (fahrenheit - 32) * 5/9
 
-fraction3 = Fraction(2, 3)
+    @staticmethod
+    def get_conversion_count():
+        return TemperatureConverter.conversion_count
 
-print(Fraction.get_instance_count())
-print(fraction1)
-print(fraction2)
+celsius_temp = 25
+fahrenheit_temp = TemperatureConverter.celsius_to_fahrenheit(celsius_temp)
+print(f"{celsius_temp} градусів Цельсія = {fahrenheit_temp} градусів Фаренгейта")
 
+converted_back = TemperatureConverter.fahrenheit_to_celsius(fahrenheit_temp)
+print(f"{fahrenheit_temp} градусів Фаренгейта = {converted_back} градусів Цельсія")
+
+print(f"Кількість конвертацій: {TemperatureConverter.get_conversion_count()}")
