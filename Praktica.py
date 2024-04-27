@@ -64,20 +64,30 @@
 # print(object.uah_t
 
 
-class Person:
-    count = 0
-    def __init__(self, name):
-        self.name = name
-        Person.count += 1
+# class Person:
+#     count = 0
+#     def __init__(self, name):
+#         self.name = name
+#         Person.count += 1
+#
+#     @classmethod
+#     def get_count(cls):
+#         return cls.count
+#
+#     def bonus (self, x = 10):
+#         return Person.get_count() + 10
+#
+# p1 = Person("Stive")
+# p2 = Person("Oleg")
+# print(Person.get_count())
+# print(p1.bonus())
 
+class Calculator:
+    @staticmethod
+    def add_numbers(num1, num2 ):
+        return num1 + num2
     @classmethod
-    def get_count(cls):
-        return cls.count
-
-    def bonus (self, x = 10):
-        return Person.get_count() + 10
-
-p1 = Person("Stive")
-p2 = Person("Oleg")
-print(Person.get_count())
-print(p1.bonus())
+    def add_numbers_with_round(cls, num1, num2):
+        num1 = round(num1)
+        num2 = round(num2)
+        return cls.add_numbers(num1, num2)
