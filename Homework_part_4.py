@@ -34,5 +34,5 @@ info_system.add_user("user2")
 info_system.add_contact("user2", "contact3")
 info_system.add_contact("user2", "contact4")
 
-# Виводимо дані системи
+
 print(info_system.data)
